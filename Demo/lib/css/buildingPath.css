@@ -1,0 +1,138 @@
+#demo {
+	background-color: #333;
+	color: #fff;
+}
+
+.function{
+    
+	display:inline;
+	margin-left:8%;
+}
+.functionEle {
+	margin-top:10px;
+}
+.selectPath {
+	width:140px;
+    margin-right:60%;
+}
+
+
+.buildingContainer{
+	overflow:scroll;
+	margin-top:3%;
+	margin-right:8%;
+	margin-left:8%;
+	
+	
+}
+
+
+text {
+	font-size:12px;
+	
+}
+
+#storytelling {
+	margin-top:2%;
+	
+	
+}
+#svgContent {
+	margin-top:40px;
+	overflow:scroll;
+	display:block;
+	margin:auto
+}
+.note {
+	text-align:center;
+	margin-top:7%;
+	margin:auto;
+	
+	font-size:15px;
+	color:#52CC52;
+}
+
+
+#pathNote {
+	float:none;
+	margin:auto;
+	margin-bottom:27px;
+	text-align:center;
+	font-style:italic;
+	
+	
+}
+
+#showingName{
+	font-weight:bold;
+	font-size:17px;
+	font-style:normal;
+}
+#last {
+	margin:auto;
+	position:absolute;
+	margin-top:12%;
+	left:45%;
+	margin-bottom:15px;
+}
+#next {
+	margin:auto;
+	position:absolute;
+	margin-top:12%;
+	right:45%;
+}
+
+
+
+
+
+
+
+
+
+
+#tree-svg {
+	
+	overflow:scroll;
+}
+
+.treeTooltip {
+	position:absolute;
+	padding:8px;
+	font-size:12px;
+	background:#52CC52;
+	opacity:70%;
+	border-radius:9px;
+	pointer-events:none;
+}
+
+/* .treeAside {
+	float:none;
+	margin:auto;
+	margin-top:40px;
+	
+	color:#52CC52;
+	font-size:17px;
+	text-align:center;
+} */
+
+.gNode:hover {
+	fill:#fff;
+}
+
+.pathName {
+	font-weight:bold;
+	font-size:13px;
+	text-decoration:underline;
+	
+}
+
+.popMark{
+	color:#1a1a1a;
+	border:none;
+	border-radius:12px;
+	padding-left:2px;
+	padding-right:2px;
+	background-color:#e7e7e7;
+	opacity:0.5;
+}

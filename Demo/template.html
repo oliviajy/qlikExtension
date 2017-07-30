@@ -1,0 +1,118 @@
+<div qv-extension  style="height: 100%; position: relative; overflow: auto;" class="ng-scope" id="demo" >
+    {{html}}
+	
+	<lui-tab-view>
+		<lui-tabset>
+			<lui-tab variant="inverse" ref="tab1"  title="Building path Here" lui-title-tooltip x-dock="bottom"><span class="lui-icon  lui-icon--edit"></span> Building Path</lui-tab>
+			<lui-tab variant="inverse" ref="tab2" on-tab-selected="start()"  title="Check Path library" lui-title-tooltip x-dock="bottom"><span class="lui-icon  lui-icon--library"></span> Discovery Library</lui-tab>
+			<lui-tab variant="inverse" ref="tab3" on-tab-selected="start()"  title="Storytelling mode" lui-title-tooltip x-dock="top"><span class="lui-icon  lui-icon--play"></span> Storytelling</lui-tab>
+		</lui-tabset>
+		
+		<lui-tab-content ref="tab1">
+			<div width="80%">
+			    
+				<div class="function">
+				    <!-- select box for paths -->
+					<lui-select x-variant="inverse" x-model="get.order" class="selectPath functionEle" ng-change="rebuild()">
+					    <option value="" disabled="" selected="">--Select--</option>
+						<option ng-value="$index" ng-repeat="pathname in pathList track by $index" >{{pathname.pathName}}</option>
+					</lui-select>
+					
+					
+					<!-- button for clear and save -->
+					<lui-button  x-variant="danger" class="functionEle" ng-click="clearPath()"  title="Clear current Selections" lui-title-tooltip x-dock="top"><span class="lui-button__icon  lui-icon  lui-icon--remove"></span>Clear Path</lui-button>
+					<lui-button  x-variant="success" class="functionEle" ng-click="openDialog()"  title="Save current path to Library" lui-title-tooltip x-dock="top"><span class="lui-button__icon  lui-icon  lui-icon--plus"></span>Save To Library</lui-button>			
+                </div>
+				
+				<div width="100%" class="buildingContainer">
+
+					<svg ng-attr-width="{{114+currentSelection.length*125}}">
+						<g>
+							<circle cx="57" cy="18" r="7" stroke="#797979" stroke-width="3" fill="#797979"></circle>
+							<!--my-rect index=$index selection="selection" ng-repeat="selection in layout.qSelectionObject.qSelections"></my-rect-->
+							
+							<g ng-attr-transform="translate({{$index*125+100}})" ng-repeat="selection in currentSelection track by $index" >
+								  <rect x= "0"
+										y="10"
+										width="90"
+										height="16"
+										rx="10"
+										stroke="#95d33f"
+										stroke-width="2"
+										fill="#95d33f"
+										>
+										
+								  </rect>
+								 
+								  <text x="5" y="22" >{{selection.qField | limitTo: 13 }}{{selection.qField.length > 13 ? '...' : ''}}</text>
+								 
+								  <line x1="-35" y1="18" x2="0" y2="18" stroke-width="2" stroke="#797979"></line>
+							</g>
+						</g>
+					</svg>
+				</div>
+			</div>		
+		</lui-tab-content>
+		
+		
+		<lui-tab-content ref="tab2" >
+			
+			<div path-library id="tree-container" chart-data="{{library}}" note-data="{{pathList}}"></div>
+			
+		</lui-tab-content>
+		
+		
+		<lui-tab-content ref="tab3">
+			<div width="80%">
+			    <div class="function">    
+					<!-- select box for paths  ng-change="rebuild()"  -->
+					<lui-select x-variant="inverse" x-model="catch.value" class="selectPath functionEle" ng-change="play()">
+					    <!-- <option value="" disabled="" selected="">--Select--</option> -->
+						<option ng-value="$index" ng-repeat="pathname in pathList track by $index">{{pathname.pathName}}</option>
+					</lui-select>
+					
+					<lui-button  class="functionPlay" ng-click="last()" id="last"><span class="lui-button__icon  lui-icon lui-icon--large lui-icon--arrow-left"></span></lui-button>
+					<lui-button  class="functionPlay" ng-click="next()" id="next"><span class="lui-button__icon  lui-icon lui-icon--large lui-icon--arrow-right"></span></lui-button>			
+                </div>
+					<!-- switch to show initial screen or playmode -->
+					<!-- 1. initial screen -->
+					<div ng-show="initialScreen">
+						<h1 class="note" >Click next to start storytelling</h1>
+					</div>
+					
+					<div ng-show="pathShow">
+						
+						<div width="100%"  id="storytelling">
+							<p class="note" id="pathNote"><span id="showingName">{{name}}</span>{{"  :    '" + note + "'"}}</p>
+							<svg ng-attr-width="{{110+currentSelection.length*125}}" id="svgContent">
+								<g>
+									<circle cx="57" cy="18" r="7" stroke="#797979" stroke-width="3" fill="#797979" tooltip="Hello" tooltip-append-to-body="true" tooltip-placement="right"></circle>
+									<!--my-rect index=$index selection="selection" ng-repeat="selection in layout.qSelectionObject.qSelections"></my-rect-->
+									
+									<g ng-attr-transform="translate({{$index*125+100}})" ng-repeat="selection in currentSelection track by $index" >
+										  <rect x= "0"
+												y="10"
+												width="90"
+												height="16"
+												rx="10"
+												stroke="#95d33f"
+												stroke-width="2"
+												fill="#95d33f"
+												>
+												
+										  </rect>
+										 
+										  <text x="5" y="22" >{{selection.qField | limitTo: 13 }}{{selection.qField.length > 13 ? '...' : ''}}</text>
+										  
+										  <line x1="-35" y1="18" x2="0" y2="18" stroke-width="2" stroke="#797979"></line>
+									</g>
+								</g>
+							</svg>
+						</div>
+					</div>
+			</div>		
+		</lui-tab-content>
+		
+		
+	</lui-tab-view>
+</div>

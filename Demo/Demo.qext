@@ -1,0 +1,14 @@
+{
+	"name": "Demo",
+	"description": "Basic empty visualization template based on angular.js",
+	"type": "visualization",
+	"version": "1.0.0",
+	"author": "Jing Yang",
+	"homepage": "",
+	"keywords": "qlik-sense, visualization, extension",
+	"license": "mit",
+	"repository": "",
+	"dependencies": {
+		"qlik-sense": ">=3.2.x"
+	}
+}

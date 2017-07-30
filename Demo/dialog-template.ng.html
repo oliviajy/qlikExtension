@@ -1,0 +1,14 @@
+<lui-dialog x-variant="inverse" style="max-width: 450px;">
+  
+  <lui-dialog-body >
+    <b>Path Name</b>
+	<input class="lui-input" ng-model="pathObj.pathName" style="margin-top: 5px;"/>
+	<b>Note</b>
+	<textarea class="lui-textarea" ng-model="pathObj.pathNote"></textarea>
+  </lui-dialog-body>
+  
+  <lui-dialog-footer>
+    <button class="lui-button  lui-dialog__footer-button" ng-click="close();">Cancel</button>
+	<button class="lui-button  lui-dialog__footer-button" ng-disabled="!pathObj.pathName" ng-click="savePath(); close();">Save</button>
+  </lui-dialog-footer>
+</lui-dialog>
